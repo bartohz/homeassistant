@@ -1,2 +1,3 @@
-# homeassistant
-Personal Home Assistant Dashboard
+# Barts Home Assistant Config
+
+## Custom Components
