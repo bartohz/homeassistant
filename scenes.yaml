@@ -1,0 +1,534 @@
+- id: '1616973546396'
+  name: Red Lights
+  entities:
+    light.bartekmainlight:
+      min_mireds: 153
+      max_mireds: 588
+      effect_list:
+      - Strobe color
+      - Police
+      - Christmas
+      - RGB
+      - Random Loop
+      - Fast Random Loop
+      - LSD
+      - Slowdown
+      - Night Mode
+      - Date Night
+      - Movie
+      - Sunrise
+      - Sunset
+      - Romance
+      - Happy Birthday
+      - Disco
+      - Strobe epilepsy!
+      - Alarm
+      - Police2
+      - WhatsApp
+      - Facebook
+      - Twitter
+      - Home
+      - Candle Flicker
+      - Slow Temp
+      - Stop
+      brightness: 255
+      color_temp: 276
+      hs_color:
+      - 2.824
+      - 100
+      rgb_color:
+      - 255
+      - 12
+      - 0
+      xy_color:
+      - 0.699
+      - 0.301
+      flowing: false
+      music_mode: false
+      friendly_name: Main Light
+      icon: mdi:ceiling-light
+      supported_features: 63
+      state: 'on'
+    light.barteklightstrip:
+      min_mireds: 153
+      max_mireds: 588
+      effect_list:
+      - Strobe color
+      - Police
+      - Christmas
+      - RGB
+      - Random Loop
+      - Fast Random Loop
+      - LSD
+      - Slowdown
+      - Night Mode
+      - Date Night
+      - Movie
+      - Sunrise
+      - Sunset
+      - Romance
+      - Happy Birthday
+      - Disco
+      - Strobe epilepsy!
+      - Alarm
+      - Police2
+      - WhatsApp
+      - Facebook
+      - Twitter
+      - Home
+      - Candle Flicker
+      - Slow Temp
+      - Stop
+      brightness: 255
+      color_temp: 259
+      hs_color:
+      - 0
+      - 100
+      rgb_color:
+      - 255
+      - 0
+      - 0
+      xy_color:
+      - 0.701
+      - 0.299
+      flowing: false
+      music_mode: false
+      friendly_name: Lightstrip
+      icon: mdi:led-strip
+      supported_features: 63
+      state: 'on'
+  icon: mdi:lightbulb-on-outline
+- id: '1616973567913'
+  name: Blue Lights
+  entities:
+    light.barteklightstrip:
+      min_mireds: 153
+      max_mireds: 588
+      effect_list:
+      - Strobe color
+      - Police
+      - Christmas
+      - RGB
+      - Random Loop
+      - Fast Random Loop
+      - LSD
+      - Slowdown
+      - Night Mode
+      - Date Night
+      - Movie
+      - Sunrise
+      - Sunset
+      - Romance
+      - Happy Birthday
+      - Disco
+      - Strobe epilepsy!
+      - Alarm
+      - Police2
+      - WhatsApp
+      - Facebook
+      - Twitter
+      - Home
+      - Candle Flicker
+      - Slow Temp
+      - Stop
+      brightness: 255
+      color_temp: 259
+      hs_color:
+      - 240
+      - 100
+      rgb_color:
+      - 0
+      - 0
+      - 255
+      xy_color:
+      - 0.136
+      - 0.04
+      flowing: false
+      music_mode: false
+      friendly_name: Lightstrip
+      icon: mdi:led-strip
+      supported_features: 63
+      state: 'on'
+    light.bartekmainlight:
+      min_mireds: 153
+      max_mireds: 588
+      effect_list:
+      - Strobe color
+      - Police
+      - Christmas
+      - RGB
+      - Random Loop
+      - Fast Random Loop
+      - LSD
+      - Slowdown
+      - Night Mode
+      - Date Night
+      - Movie
+      - Sunrise
+      - Sunset
+      - Romance
+      - Happy Birthday
+      - Disco
+      - Strobe epilepsy!
+      - Alarm
+      - Police2
+      - WhatsApp
+      - Facebook
+      - Twitter
+      - Home
+      - Candle Flicker
+      - Slow Temp
+      - Stop
+      brightness: 255
+      color_temp: 276
+      hs_color:
+      - 240
+      - 100
+      rgb_color:
+      - 0
+      - 0
+      - 255
+      xy_color:
+      - 0.136
+      - 0.04
+      flowing: false
+      music_mode: false
+      friendly_name: Main Light
+      icon: mdi:ceiling-light
+      supported_features: 63
+      state: 'on'
+  icon: mdi:lightbulb-on-outline
+- id: '1616975575861'
+  name: Lights Off
+  entities:
+    light.bartekmainlight:
+      min_mireds: 153
+      max_mireds: 588
+      effect_list:
+      - Strobe color
+      - Police
+      - Christmas
+      - RGB
+      - Random Loop
+      - Fast Random Loop
+      - LSD
+      - Slowdown
+      - Night Mode
+      - Date Night
+      - Movie
+      - Sunrise
+      - Sunset
+      - Romance
+      - Happy Birthday
+      - Disco
+      - Strobe epilepsy!
+      - Alarm
+      - Police2
+      - WhatsApp
+      - Facebook
+      - Twitter
+      - Home
+      - Candle Flicker
+      - Slow Temp
+      - Stop
+      supported_color_modes:
+      - color_temp
+      - hs
+      - rgb
+      flowing: false
+      music_mode: false
+      friendly_name: Main Light
+      icon: mdi:ceiling-light
+      supported_features: 44
+      state: 'off'
+    light.barteklightstrip:
+      min_mireds: 153
+      max_mireds: 588
+      effect_list:
+      - Strobe color
+      - Police
+      - Christmas
+      - RGB
+      - Random Loop
+      - Fast Random Loop
+      - LSD
+      - Slowdown
+      - Night Mode
+      - Date Night
+      - Movie
+      - Sunrise
+      - Sunset
+      - Romance
+      - Happy Birthday
+      - Disco
+      - Strobe epilepsy!
+      - Alarm
+      - Police2
+      - WhatsApp
+      - Facebook
+      - Twitter
+      - Home
+      - Candle Flicker
+      - Slow Temp
+      - Stop
+      supported_color_modes:
+      - color_temp
+      - hs
+      - rgb
+      flowing: false
+      music_mode: false
+      friendly_name: yeelight_stripe_0x0000000008016859
+      icon: mdi:led-strip
+      supported_features: 44
+      state: 'off'
+    light.barteklampa:
+      supported_color_modes:
+      - brightness
+      friendly_name: Bartek Lampa
+      icon: mdi:desk-lamp
+      supported_features: 41
+      state: 'off'
+  icon: mdi:lightbulb-off-outline
+- id: '1616982521739'
+  name: Natural Lights
+  entities:
+    light.bartekmainlight:
+      state: true
+      brightness: 255
+      color_temp: 153
+    light.barteklightstrip:
+      min_mireds: 153
+      max_mireds: 588
+      effect_list:
+      - Strobe color
+      - Police
+      - Christmas
+      - RGB
+      - Random Loop
+      - Fast Random Loop
+      - LSD
+      - Slowdown
+      - Night Mode
+      - Date Night
+      - Movie
+      - Sunrise
+      - Sunset
+      - Romance
+      - Happy Birthday
+      - Disco
+      - Strobe epilepsy!
+      - Alarm
+      - Police2
+      - WhatsApp
+      - Facebook
+      - Twitter
+      - Home
+      - Candle Flicker
+      - Slow Temp
+      - Stop
+      flowing: false
+      music_mode: false
+      friendly_name: Lightstrip
+      icon: mdi:led-strip
+      supported_features: 63
+      state: 'off'
+  icon: mdi:lightbulb-on-outline
+- id: '1617145020345'
+  name: Notification
+  entities:
+    light.barteklightstrip:
+      min_mireds: 153
+      max_mireds: 588
+      effect_list:
+      - Strobe color
+      - Police
+      - Christmas
+      - RGB
+      - Random Loop
+      - Fast Random Loop
+      - LSD
+      - Slowdown
+      - Night Mode
+      - Date Night
+      - Movie
+      - Sunrise
+      - Sunset
+      - Romance
+      - Happy Birthday
+      - Disco
+      - Strobe epilepsy!
+      - Alarm
+      - Police2
+      - WhatsApp
+      - Facebook
+      - Twitter
+      - Home
+      - Candle Flicker
+      - Slow Temp
+      - Stop
+      brightness: 255
+      color_temp: 259
+      hs_color:
+      - 0
+      - 100
+      rgb_color:
+      - 255
+      - 0
+      - 0
+      xy_color:
+      - 0.701
+      - 0.299
+      effect: Police
+      flowing: true
+      music_mode: false
+      friendly_name: Lightstrip
+      icon: mdi:led-strip
+      supported_features: 63
+      state: 'on'
+- id: '1618951962986'
+  name: Movie Mode
+  entities:
+    light.bartekmainlight:
+      min_mireds: 153
+      max_mireds: 588
+      effect_list:
+      - Strobe color
+      - Police
+      - Christmas
+      - RGB
+      - Random Loop
+      - Fast Random Loop
+      - LSD
+      - Slowdown
+      - Night Mode
+      - Date Night
+      - Movie
+      - Sunrise
+      - Sunset
+      - Romance
+      - Happy Birthday
+      - Disco
+      - Strobe epilepsy!
+      - Alarm
+      - Police2
+      - WhatsApp
+      - Facebook
+      - Twitter
+      - Home
+      - Candle Flicker
+      - Slow Temp
+      - Stop
+      supported_color_modes:
+      - color_temp
+      - hs
+      flowing: false
+      music_mode: false
+      friendly_name: Main Light
+      icon: mdi:ceiling-light
+      supported_features: 63
+      state: 'off'
+    light.barteklightstrip:
+      min_mireds: 153
+      max_mireds: 588
+      effect_list:
+      - Strobe color
+      - Police
+      - Christmas
+      - RGB
+      - Random Loop
+      - Fast Random Loop
+      - LSD
+      - Slowdown
+      - Night Mode
+      - Date Night
+      - Movie
+      - Sunrise
+      - Sunset
+      - Romance
+      - Happy Birthday
+      - Disco
+      - Strobe epilepsy!
+      - Alarm
+      - Police2
+      - WhatsApp
+      - Facebook
+      - Twitter
+      - Home
+      - Candle Flicker
+      - Slow Temp
+      - Stop
+      supported_color_modes:
+      - color_temp
+      - hs
+      color_mode: hs
+      brightness: 36
+      hs_color:
+      - 240
+      - 100
+      rgb_color:
+      - 0
+      - 0
+      - 255
+      xy_color:
+      - 0.136
+      - 0.04
+      color_temp: 259
+      flowing: false
+      music_mode: false
+      friendly_name: Lightstrip
+      icon: mdi:led-strip
+      supported_features: 63
+      state: 'on'
+- id: '1618952141777'
+  name: Neutral Lights
+  entities:
+    light.bartekmainlight:
+      min_mireds: 153
+      max_mireds: 588
+      brightness: 255
+      color_temp: 300
+      flowing: false
+      music_mode: false
+      friendly_name: Main Light
+      icon: mdi:ceiling-light
+      supported_features: 63
+      state: 'on'
+    light.barteklightstrip:
+      min_mireds: 153
+      max_mireds: 588
+      effect_list:
+      - Strobe color
+      - Police
+      - Christmas
+      - RGB
+      - Random Loop
+      - Fast Random Loop
+      - LSD
+      - Slowdown
+      - Night Mode
+      - Date Night
+      - Movie
+      - Sunrise
+      - Sunset
+      - Romance
+      - Happy Birthday
+      - Disco
+      - Strobe epilepsy!
+      - Alarm
+      - Police2
+      - WhatsApp
+      - Facebook
+      - Twitter
+      - Home
+      - Candle Flicker
+      - Slow Temp
+      - Stop
+      supported_color_modes:
+      - color_temp
+      - hs
+      flowing: false
+      music_mode: false
+      friendly_name: Lightstrip
+      icon: mdi:led-strip
+      supported_features: 63
+      state: 'off'
