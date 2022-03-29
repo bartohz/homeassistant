@@ -1,0 +1,271 @@
+views:
+  - theme: Backend-selected
+    type: custom:horizontal-layout
+    badges: []
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: custom:simple-clock-card
+            hide_seconds: true
+            use_military: true
+            font_size: 8rem
+            padding_size: 32px
+            card_mod:
+              style: |
+                ha-card {
+                  background: none;
+                  text-align: center;
+                  text-transform: capitalize;
+                }
+          - type: custom:button-card
+            color_type: blank-card
+            styles:
+              card:
+                - height: 20px
+          - type: horizontal-stack
+            cards:
+              - type: entity
+                entity: sensor.sypialnia_temperature
+                name: Indoor Temperature
+                card_mod:
+                  style: |
+                    ha-card {
+                      background: none;
+                      text-align: center;
+                      text-transform: capitalize;
+                    }
+              - type: entity
+                entity: sensor.dom_outdoor_temperature
+                name: Outdoor Temperature
+                card_mod:
+                  style: |
+                    ha-card {
+                      background: none;
+                      text-align: center;
+                      text-transform: capitalize;
+                    }
+          - type: custom:atomic-calendar-revive
+            name: Calendar
+            entities:
+              - entity: calendar.calendar
+              - entity: calendar.work
+              - entity: calendar.payments_subscriptions
+              - entity: calendar.birthdays
+      - type: vertical-stack
+        cards:
+          - type: entities
+            show_header_toggle: false
+            entities:
+              - type: custom:text-divider-row
+                text: My Room
+              - type: custom:slider-entity-row
+                entity: light.bartekmainlight
+                name: Ceiling Light
+                toggle: true
+              - type: custom:slider-entity-row
+                entity: light.barteklightstrip
+                name: TV Lightstrip
+                toggle: true
+              - type: custom:slider-entity-row
+                entity: light.b
+                name: Desk Lamp
+                toggle: true
+              - type: divider
+              - entity: media_player.mini
+                type: custom:multiple-entity-row
+                name: Other
+                icon: mdi:bookmark-outline
+                tap_action:
+                  action: none
+                show_state: false
+                entities:
+                  - entity: media_player.mini
+                    icon: mdi:google-home
+                    tap_action:
+                      action: more-info
+                  - entity: media_player.mibox
+                    icon: mdi:television
+                    tap_action:
+                      action: more-info
+                  - entity: switch.fridge
+                    toggle: true
+          - type: horizontal-stack
+            cards:
+              - type: entities
+                entities:
+                  - type: custom:text-divider-row
+                    text: Hallway
+                  - entity: light.upstairshallwayceiling
+                    name: Upstairs
+                  - entity: light.downstairshallwayceiling
+                    name: Downstairs
+              - type: entities
+                entities:
+                  - type: custom:text-divider-row
+                    text: Kitchen
+                  - entity: light.kitchenledstrip
+                    name: Ledstrip
+                  - entity: media_player.nest_hub
+                    name: Nest Hub
+          - type: horizontal-stack
+            cards:
+              - type: entities
+                entities:
+                  - type: custom:text-divider-row
+                    text: Sitting Room
+                  - entity: light.sittingroomceiling
+                    name: Ceiling
+                  - entity: sensor.printersr
+                    name: Printer
+              - type: entities
+                entities:
+                  - type: custom:text-divider-row
+                    text: Living Room
+                  - entity: light.livingroomceilinglight
+                    name: Ceiling
+                  - entity: light.livingroomhuego
+                    name: Lamp
+          - type: horizontal-stack
+            cards:
+              - type: entities
+                entities:
+                  - type: custom:text-divider-row
+                    text: Michałs Room
+                  - card:
+                      entity: light.michalceilinglight
+                      name: Ceiling Light
+                    restrictions: confirm
+                    type: custom:restriction-card
+                    row: true
+                    unlocked_icon: mdi:lock-open-outline
+              - type: entities
+                entities:
+                  - type: custom:text-divider-row
+                    text: Parents Room
+                  - card:
+                      entity: light.parentsceilinglight
+                      name: Ceiling Light
+                    restrictions: confirm
+                    type: custom:restriction-card
+                    row: true
+                    unlocked_icon: mdi:lock-open-outline
+                  - card:
+                      entity: light.parentshuego
+                      name: Lamp
+                    restrictions: confirm
+                    type: custom:restriction-card
+                    row: true
+                    unlocked_icon: mdi:lock-open-outline
+      - type: vertical-stack
+        cards:
+          - type: entities
+            entities:
+              - type: custom:text-divider-row
+                text: Home Assistant
+              - entity: sensor.hacsupdates
+                name: HACS Updates
+                icon: hacs:hacs
+              - entity: sensor.updates
+                name: HA Updates
+                icon: mdi:update
+              - entity: sensor.uptime
+                name: Last HA Boot
+              - type: custom:text-divider-row
+                text-divider-color: primary-text-color
+                text: System
+              - entity: sensor.processor_use_percent
+                type: custom:multiple-entity-row
+                name: CPU
+                tap_action:
+                  action: none
+                show_state: false
+                entities:
+                  - entity: sensor.processor_use_percent
+                    name: Use
+                    tap_action:
+                      action: more-info
+                  - entity: sensor.load_5m
+                    name: Load
+                    tap_action:
+                      action: more-info
+                  - entity: sensor.processor_temperature
+                    name: Temperature
+                    tap_action:
+                      action: more-info
+              - entity: sensor.memory_use_percent
+                name: Memory Use
+              - entity: sensor.disk_use_percent
+                name: Boot Disk Usage
+              - entity: sensor.last_boot
+                name: Last Server Boot
+              - type: custom:text-divider-row
+                text: Plex
+              - entity: sensor.epimetheus_library_movies
+              - entity: sensor.epimetheus_library_tv_shows
+              - entity: sensor.epimetheus_library_anime
+              - entity: sensor.plex_epimetheus
+                name: Current Users
+              - type: custom:bar-card
+                entities:
+                  - entity: sensor.sonarr_disk_space
+                max: 4096
+                positions:
+                  icon: 'off'
+                  indicator: inside
+                severity:
+                  - color: Red
+                    from: 3501
+                    to: 4096
+                  - color: Orange
+                    from: 3001
+                    to: 3500
+                  - color: Green
+                    from: 0
+                    to: 3000
+              - type: custom:text-divider-row
+                text: Ombi
+              - entity: sensor.ombi_pending_requests
+                name: Pending Requests
+      - type: vertical-stack
+        cards:
+          - type: entities
+            entities:
+              - type: custom:text-divider-row
+                text: qBitTorrent
+              - entity: sensor.qbittorrent_status
+                type: custom:multiple-entity-row
+                name: Status
+                icon: mdi:download-network-outline
+                tap_action:
+                  action: none
+                show_state: true
+                entities:
+                  - entity: sensor.qbittorrent_down_speed
+                    name: Download
+                    tap_action:
+                      action: more-info
+                  - entity: sensor.qbittorrent_up_speed
+                    name: Upload
+                    tap_action:
+                      action: more-info
+          - type: custom:mini-graph-card
+            name: Internet Speed
+            icon: mdi:speedometer
+            points_per_hour: 0.25
+            entities:
+              - entity: sensor.speeddownmb
+                name: Download
+              - entity: sensor.speedupmb
+                name: Upload
+          - type: custom:mini-graph-card
+            name: Downloads & Uploads this month
+            icon: mdi:web
+            points_per_hour: 0.04
+            hours_to_show: 730
+            entities:
+              - entity: sensor.totaldownload
+                name: Download
+                show_state: true
+              - entity: sensor.totalupload
+                name: Upload
+                show_state: true
