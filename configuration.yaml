@@ -10,14 +10,22 @@ group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
+secrets: !include secrets.yaml
 
 frontend:
   themes: !include_dir_merge_named themes
+
+####################
+#                  #
+#   INTEGRATIONS   #
+#                  #
+####################
 
 # Google - Calendars
 google:
   client_id: !secret googleid 
   client_secret: !secret googlesecret 
+  
 # Yeelight - Ceiling and Lightstrip
 yeelight:
   devices:
@@ -25,114 +33,7 @@ yeelight:
       name: Bartek Light Strip
     192.168.68.113:
       name: Bartek Ceiling
-sensor:
-# QBitTorrent - Torrent traffic tracking
-  - platform: qbittorrent
-    url: "http://192.168.68.132:8111/"
-    username: !secret qbuser
-    password: !secret qbpass
-# Radarr
-  - platform: radarr
-    api_key: !secret radarrapi
-    monitored_conditions:
-      - movies
-# System Monitor - Server Stats
-  - platform: systemmonitor
-    resources:
-      - type: disk_use
-        arg: /media/Epimetheus
-      - type: disk_use_percent
-        arg: /media/Epimetheus
-      - type: disk_use
-        arg: /
-      - type: disk_use_percent
-        arg: /
-      - type: memory_free
-      - type: memory_use_percent
-      - type: load_5m
-      - type: processor_use
-      - type: processor_temperature
-      - type: last_boot
-# Converting router traffic into GB
-  - platform: template
-    sensors:
-      routerreceived:
-        friendly_name: "Router Received"
-        unit_of_measurement: "GB"
-        value_template: "{{ (states('sensor.m4r_b_received') | float / 1073741824) | round(2) }}"
-      routersent:
-        friendly_name: "Router Sent"
-        unit_of_measurement: "GB"
-        value_template: "{{ (states('sensor.m4r_b_sent') | float / 1073741824) | round(2) }}"
-      speeddownmb:
-        friendly_name: "Speed Down - MB"
-        unit_of_measurement: "MB/s"
-        value_template: "{{ (states('sensor.speedtest_download') | float * 0.125) | round(0) }}"
-      speedupmb:
-        friendly_name: "Speed Up - MB"
-        unit_of_measurement: "MB/s"
-        value_template: "{{ (states('sensor.speedtest_upload') | float * 0.125) | round(0) }}"
-# Media Cards
-  - platform: radarr_upcoming_media
-    api_key: !secret radarrapi
-    host: 192.168.68.132
-    port: 7878
-    days: 480
-    theaters: false
-    max: 10
-  - platform: sonarr_upcoming_media
-    api_key: !secret sonarrapi
-    host: 192.168.68.132
-    port: 8989
-    days: 480
-    max: 10
-# Server Uptime
-  - platform: uptime
-# Show TV and Printer as On or Off instead of Unavailable when off
-  - platform: template
-    sensors:
-      livingroomtv:
-        friendly_name: "Living Room TV"
-        value_template: >-
-          {% if is_state('binary_sensor.lrtv', 'on') %}
-            On
-          {% else %}
-            Off
-          {% endif %}
-      printersr:
-        friendly_name: "Sitting Room Printer"
-        value_template: >-
-          {% if is_state('sensor.epson_epson_stylus_sx535wd', 'unavailable') %}
-            Off
-          {% else %}
-            On
-          {% endif %}
-# Show HA Updates and HACS update status instead of on or off
-  - platform: template
-    sensors:
-      updates:
-        friendly_name: "HA Updates"
-        value_template: >-
-          {% if is_state('binary_sensor.updater', 'off') %}
-            No Pending Updates
-          {% else %}
-            Updates Available
-          {% endif %}
-      hacsupdates:
-        friendly_name: "HACS Updates"
-        value_template: >-
-          {% if is_state('sensor.hacs', '0') %}
-            No Pending Updates
-          {% else %}
-            Updates Available
-          {% endif %}
-# Convert media hard drive space into GB
-  - platform: template
-    sensors:
-      mediaspace:
-        friendly_name: "Media Storage Space"
-        unit_of_measurement: 'GB'
-        value_template: "{{ states('sensor.sonarr_disk_space')|int }}"
+      
 # Monthly setup for internet usage
 utility_meter:
   totaldownload:
@@ -145,6 +46,14 @@ utility_meter:
     cycle: monthly
     offset:
       days: 27
+      
+# Ombi
+ombi:
+  host: 192.168.68.132
+  username: calypso
+  api_key: !secret ombiapi
+  port: 3579
+  
 # Garbage collection tracker for Panda collections
 garbage_collection:
   sensors:
@@ -168,6 +77,7 @@ garbage_collection:
     offset: 7
     verbose_state: True
     verbose_format: " in {days} days"
+    
 # Front Door Camera
 camera:
   - platform: generic
@@ -178,8 +88,147 @@ camera:
     username: !secret fduser
     password: !secret fdpass
     authentication: digest
+    
 # TPLink Smart Plug
 tplink:
     discovery: true
     light:
      - host: 192.168.68.102
+      
+#####################
+#                   #
+#      Sensors      #
+#                   #
+#####################
+      
+sensor:
+# Time
+  - platform: time_date
+    display_options:
+      - 'time'
+      - 'date'
+      - 'date_time'
+      - 'date_time_utc'
+      - 'date_time_iso'
+      - 'time_date'
+      - 'time_utc'
+      - 'beat'
+      
+# QBitTorrent - Torrent traffic tracking
+  - platform: qbittorrent
+    url: "http://192.168.68.132:8111/"
+    username: !secret qbuser
+    password: !secret qbpass
+    
+# Radarr
+  - platform: radarr
+    api_key: !secret radarrapi
+    monitored_conditions:
+      - movies
+      - upcoming
+      - diskspace
+      
+# System Monitor - Server Stats
+  - platform: systemmonitor
+    resources:
+      - type: disk_use
+        arg: /media/Epimetheus
+      - type: disk_use_percent
+        arg: /media/Epimetheus
+      - type: disk_use
+        arg: /
+      - type: disk_use_percent
+        arg: /
+      - type: memory_free
+      - type: memory_use_percent
+      - type: load_5m
+      - type: processor_use
+      - type: processor_temperature
+      - type: last_boot
+      
+# Converting router traffic into GB
+  - platform: template
+    sensors:
+      routerreceived:
+        friendly_name: "Router Received"
+        unit_of_measurement: "GB"
+        value_template: "{{ (states('sensor.m4r_b_received') | float / 1073741824) | round(2) }}"
+      routersent:
+        friendly_name: "Router Sent"
+        unit_of_measurement: "GB"
+        value_template: "{{ (states('sensor.m4r_b_sent') | float / 1073741824) | round(2) }}"
+      speeddownmb:
+        friendly_name: "Speed Down - MB"
+        unit_of_measurement: "MB/s"
+        value_template: "{{ (states('sensor.speedtest_download') | float * 0.125) | round(0) }}"
+      speedupmb:
+        friendly_name: "Speed Up - MB"
+        unit_of_measurement: "MB/s"
+        value_template: "{{ (states('sensor.speedtest_upload') | float * 0.125) | round(0) }}"
+        
+# Media Cards
+  - platform: radarr_upcoming_media
+    api_key: !secret radarrapi
+    host: 192.168.68.132
+    port: 7878
+    days: 14
+    ssl: false
+    theaters: false
+    max: 10
+  - platform: sonarr_upcoming_media
+    api_key: !secret sonarrapi
+    host: !secret host
+    port: 8989
+    days: 480
+    max: 10
+    
+# Server Uptime
+  - platform: uptime
+  
+# Show TV and Printer as On or Off instead of Unavailable when off
+  - platform: template
+    sensors:
+      livingroomtv:
+        friendly_name: "Living Room TV"
+        value_template: >-
+          {% if is_state('binary_sensor.lrtv', 'on') %}
+            On
+          {% else %}
+            Off
+          {% endif %}
+      printersr:
+        friendly_name: "Sitting Room Printer"
+        value_template: >-
+          {% if is_state('sensor.epson_epson_stylus_sx535wd', 'unavailable') %}
+            Off
+          {% else %}
+            On
+          {% endif %}
+          
+# Show HA Updates and HACS update status instead of on or off
+  - platform: template
+    sensors:
+      updates:
+        friendly_name: "HA Updates"
+        value_template: >-
+          {% if is_state('binary_sensor.updater', 'off') %}
+            No Pending Updates
+          {% else %}
+            Updates Available
+          {% endif %}
+      hacsupdates:
+        friendly_name: "HACS Updates"
+        value_template: >-
+          {% if is_state('sensor.hacs', '0') %}
+            No Pending Updates
+          {% else %}
+            Updates Available
+          {% endif %}
+          
+# Convert media hard drive space into GB
+  - platform: template
+    sensors:
+      mediaspace:
+        friendly_name: "Media Storage Space"
+        unit_of_measurement: 'GB'
+        value_template: "{{ states('sensor.sonarr_disk_space')|int }}"
