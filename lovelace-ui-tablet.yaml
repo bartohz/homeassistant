@@ -1,0 +1,237 @@
+kiosk_mode:
+  user_settings:
+    - users:
+        - Tablet
+      hide_header: true
+      hide_sidebar: true
+views:
+  - theme: ios_theme
+    type: panel
+    icon: mdi:tablet
+    badges: []
+    cards:
+      - type: custom:layout-card
+        layout_type: custom:horizontal-layout
+        layout:
+          max_columns: 3
+          column_widths: 0.6fr 1.2fr 1.2fr;
+        cards:
+          - type: vertical-stack
+            column: 1
+            cards:
+              - type: custom:button-card
+                color_type: blank-card
+                styles:
+                  card:
+                    - height: 20px
+              - type: custom:simple-clock-card
+                hide_seconds: true
+                use_military: true
+                font_size: 8rem
+                padding_size: 32px
+                card_mod:
+                  style: |
+                    ha-card {
+                      background: none;
+                      text-align: center;
+                      text-transform: capitalize;
+                    }
+              - type: glance
+                entities:
+                  - person.bart
+                card_mod:
+                  style: |
+                    ha-card {
+                      background: none;
+                    }
+              - type: custom:button-card
+                color_type: blank-card
+                styles:
+                  card:
+                    - height: 40px
+              - type: horizontal-stack
+                cards:
+                  - type: entity
+                    entity: sensor.sypialnia_temperature
+                    name: Dom
+                    card_mod:
+                      style: |
+                        ha-card {
+                          background: none;
+                        }
+                  - type: entity
+                    entity: sensor.dom_outdoor_temperature
+                    name: Na Zewnątrz
+                    card_mod:
+                      style: |
+                        ha-card {
+                          background: none;
+                        }
+              - type: picture-glance
+                show_name: false
+                entities: []
+                camera_image: camera.yi_front_door
+                camera_view: live
+          - type: vertical-stack
+            column: 2
+            cards:
+              - type: horizontal-stack
+                title: Salon
+                cards:
+                  - type: custom:button-card
+                    aspect_ratio: 2/1
+                    entity: light.livingroomceilinglight
+                    show_name: false
+                    color: auto
+                    label: Sufit
+                    show_label: true
+                    double_tap_action:
+                      action: more-info
+                  - type: custom:button-card
+                    aspect_ratio: 2/1
+                    entity: light.livingroomhuego
+                    show_name: false
+                    color: auto
+                    label: Lampa
+                    show_label: true
+                    double_tap_action:
+                      action: more-info
+              - type: horizontal-stack
+                title: Kuchnia i Jadalnia
+                cards:
+                  - type: custom:button-card
+                    aspect_ratio: 2/1
+                    entity: light.kitchenledstrip
+                    show_name: false
+                    color: auto
+                    label: Ledstrip
+                    show_label: true
+                    double_tap_action:
+                      action: more-info
+                  - type: custom:button-card
+                    aspect_ratio: 2/1
+                    entity: light.sittingroomceiling
+                    show_name: false
+                    color: auto
+                    label: Sufit
+                    show_label: true
+                    double_tap_action:
+                      action: more-info
+              - type: horizontal-stack
+                cards:
+                  - type: custom:button-card
+                    aspect_ratio: 2/1
+                    entity: climate.sypialnia
+                    show_name: false
+                    label: Ogrzewanie
+                    show_label: true
+                    color: auto
+                    double_tap_action:
+                      action: more-info
+                  - type: custom:button-card
+                    aspect_ratio: 2/1
+                    entity: media_player.nest_hub
+                    show_name: false
+                    label: Nest Hub
+                    show_label: true
+                    color: auto
+                    double_tap_action:
+                      action: more-info
+              - type: horizontal-stack
+                title: Przedpokój
+                cards:
+                  - type: custom:button-card
+                    aspect_ratio: 2/1
+                    entity: light.downstairshallwayceiling
+                    show_name: false
+                    color: auto
+                    label: Dół
+                    show_label: true
+                    double_tap_action:
+                      action: more-info
+                  - type: custom:button-card
+                    aspect_ratio: 2/1
+                    entity: light.upstairshallwayceiling
+                    show_name: false
+                    color: rgb(255, 211, 12)
+                    label: Góra
+                    show_label: true
+                    double_tap_action:
+                      action: more-info
+          - type: vertical-stack
+            column: 3
+            cards:
+              - type: horizontal-stack
+                title: Sypialnia
+                cards:
+                  - type: custom:button-card
+                    aspect_ratio: 2/1
+                    entity: light.parentsceilinglight
+                    show_name: false
+                    color: auto
+                    label: Sufit
+                    show_label: true
+                    double_tap_action:
+                      action: more-info
+                  - type: custom:button-card
+                    aspect_ratio: 2/1
+                    entity: light.parentshuego
+                    show_name: false
+                    color: auto
+                    label: Lampa
+                    show_label: true
+                    double_tap_action:
+                      action: more-info
+              - type: horizontal-stack
+                title: Sypialnia Bartka
+                cards:
+                  - type: custom:button-card
+                    aspect_ratio: 2/1
+                    entity: light.bartekmainlight
+                    show_name: false
+                    color: auto
+                    label: Sufit
+                    show_label: true
+                    double_tap_action:
+                      action: more-info
+                  - type: custom:button-card
+                    aspect_ratio: 2/1
+                    entity: light.barteklightstrip
+                    show_name: false
+                    color: auto
+                    label: Ledstrip
+                    show_label: true
+                    double_tap_action:
+                      action: more-info
+              - type: horizontal-stack
+                cards:
+                  - type: custom:button-card
+                    aspect_ratio: 2/1
+                    entity: light.b
+                    show_name: false
+                    color: auto
+                    label: Lampa
+                    show_label: true
+                    double_tap_action:
+                      action: more-info
+                  - type: custom:button-card
+                    aspect_ratio: 2/1
+                    entity: switch.fridge
+                    show_name: false
+                    color: rgb(255, 211, 12)
+                    label: Drukarka
+                    show_label: true
+                    double_tap_action:
+                      action: more-info
+              - type: horizontal-stack
+                title: Sypialnia Michała
+                cards:
+                  - type: custom:button-card
+                    aspect_ratio: 4/1
+                    entity: light.michalceilinglight
+                    show_name: false
+                    color: rgb(255, 211, 12)
+                    label: Sufit
+                    show_label: true
+                    double_tap_action:
+                      action: more-info
