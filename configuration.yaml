@@ -169,7 +169,7 @@ sensor:
 # Media Cards
   - platform: radarr_upcoming_media
     api_key: !secret radarrapi
-    host: 192.168.68.132
+    host: !secret host
     port: 7878
     days: 14
     ssl: false
